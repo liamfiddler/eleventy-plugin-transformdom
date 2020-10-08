@@ -1,0 +1,22 @@
+{
+  "name": "eleventy-plugin-transformdom",
+  "version": "1.0.0",
+  "description": "An eleventy plugin to modify the DOM when outputting HTML",
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eleventy",
+    "plugin",
+    "dom",
+    "html",
+    "modify",
+    "11ty"
+  ],
+  "author": "@liamfiddler",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^16.4.0"
+  }
+}
