@@ -18,10 +18,16 @@ const { JSDOM } = require('jsdom');
  */
 
 /**
- * @param {any} eleventyConfig
- * @param {Record<string, (args: TransformArgs) => void>} transforms
+ * @typedef {Object} TransformItem
+ * @property {string} selector
+ * @property {(args: TransformArgs) => void} transform
  */
-function configFunction(eleventyConfig, transforms = {}) {
+
+/**
+ * @param {any} eleventyConfig
+ * @param {TransformItem[]} transforms
+ */
+function configFunction(eleventyConfig, transforms = []) {
   /**
    * @param {string} rawContent
    * @param {string} outputPath
@@ -41,7 +47,7 @@ function configFunction(eleventyConfig, transforms = {}) {
 
       const dom = new JSDOM(content);
 
-      Object.entries(transforms).forEach(([selector, transform]) => {
+      transforms.forEach(({ selector, transform }) => {
         transform({
           elements: Array.from(dom.window.document.querySelectorAll(selector)),
           window: dom.window,

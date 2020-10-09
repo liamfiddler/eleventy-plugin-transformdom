@@ -7,7 +7,10 @@ const addPageTitle = ({ elements, document }) => {
 };
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(transformDomPlugin, {
-    'h1': addPageTitle,
-  });
+  eleventyConfig.addPlugin(transformDomPlugin, [
+    {
+      selector: 'h1',
+      transform: addPageTitle,
+    },
+  ]);
 };

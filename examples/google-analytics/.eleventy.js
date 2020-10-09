@@ -17,7 +17,10 @@ const appendGoogleAnalytics = ({ elements, document }) => {
 };
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(transformDomPlugin, {
-    'body': appendGoogleAnalytics,
-  });
+  eleventyConfig.addPlugin(transformDomPlugin, [
+    {
+      selector: 'body',
+      transform: appendGoogleAnalytics,
+    },
+  ]);
 };

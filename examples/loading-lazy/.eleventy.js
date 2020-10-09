@@ -7,7 +7,10 @@ const addLoadingLazyAttribute = ({ elements }) => {
 };
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(transformDomPlugin, {
-    'img': addLoadingLazyAttribute,
-  });
+  eleventyConfig.addPlugin(transformDomPlugin, [
+    {
+      selector: 'img',
+      transform: addLoadingLazyAttribute,
+    },
+  ]);
 };

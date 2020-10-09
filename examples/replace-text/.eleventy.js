@@ -16,8 +16,14 @@ const updateText = ({ elements }) => {
 };
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(transformDomPlugin, {
-    body: updateGeneratedDate,
-    p: updateText,
-  });
+  eleventyConfig.addPlugin(transformDomPlugin, [
+    {
+      selector: 'body',
+      transform: updateGeneratedDate,
+    },
+    {
+      selector: 'p',
+      transform: updateText,
+    },
+  ]);
 };
