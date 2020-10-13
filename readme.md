@@ -47,9 +47,11 @@ module.exports = function (eleventyConfig) {
 
 ### Write your Transform Items
 
-The plugins takes an array of Transform Items as configuration. Each Transform Item will be run in sequence, meaning you can write a selector and transform that modifies the DOM, then the next Transform Item can further modify the resulting DOM, and so on.
+The plugins takes an array of Transform Items as configuration.
 
 A _Transform Item_ is an Object that contains two keys; `selector` & `transform`
+
+Each Transform Item will be run in order. This means you can write a Transform Item that modifies the DOM, then the next Transform Item can further modify the resulting DOM, and so on.
 
 #### selector
 
@@ -76,7 +78,7 @@ The function will be passed an Object as argument. The `args` Object has the fol
 | elements | `Element[]` | An array of elements in the DOM matching the provided `selector` |
 | window | `DOMWindow` | The `window` of the generated HTML |
 | document | `Document` | The `window.document` of the generated HTML |
-| inputPath | `string` | The source file path from which Wleventy is generating the HTML |
+| inputPath | `string` | The source file path from which Eleventy is generating the HTML |
 | outputPath | `string` | The output path/filename of the HTML file being generated |
 | inputDir | `string` | The source directory from which Eleventy is building the site ([see the Eleventy docs](https://www.11ty.dev/docs/config/#input-directory)) |
 | outputDir | `string` | The directory inside which the finished templates will be written to by Eleventy ([see the Eleventy docs](https://www.11ty.dev/docs/config/#output-directory)) |
