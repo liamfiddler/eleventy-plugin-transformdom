@@ -47,7 +47,7 @@ module.exports = function (eleventyConfig) {
 
 ### Write your Transform Items
 
-The plugins takes an array of Transform Items as configuration.
+The plugin takes an array of Transform Items as configuration.
 
 A _Transform Item_ is an Object that contains two keys; `selector` & `transform`
 
