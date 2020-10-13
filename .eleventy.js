@@ -1,20 +1,14 @@
 const { JSDOM } = require('jsdom');
 
 /**
- * @typedef {Object} TransformParams
- * @property {string} outputPath
- * @property {string} outputDir
- * @property {string} inputPath
- * @property {string} inputDir
- * @property {string} extraOutputSubdirectory
- */
-
-/**
  * @typedef {Object} TransformArgs
  * @property {Element[]} elements
  * @property {import('jsdom').DOMWindow} window
  * @property {Document} document
- * @property {TransformParams} params
+ * @property {string} outputPath
+ * @property {string} outputDir
+ * @property {string} inputPath
+ * @property {string} inputDir
  */
 
 /**
@@ -36,15 +30,6 @@ function configFunction(eleventyConfig, transforms = []) {
     let content = rawContent;
 
     if (outputPath && outputPath.endsWith('.html')) {
-      /** @type TransformParams */
-      const params = {
-        outputPath,
-        outputDir: this.outputDir,
-        inputPath: this.inputPath,
-        inputDir: this.inputDir,
-        extraOutputSubdirectory: this.extraOutputSubdirectory,
-      };
-
       const dom = new JSDOM(content);
 
       transforms.forEach(({ selector, transform }) => {
@@ -52,7 +37,10 @@ function configFunction(eleventyConfig, transforms = []) {
           elements: Array.from(dom.window.document.querySelectorAll(selector)),
           window: dom.window,
           document: dom.window.document,
-          params,
+          outputPath,
+          outputDir: this.outputDir,
+          inputPath: this.inputPath,
+          inputDir: this.inputDir,
         });
       });
 
