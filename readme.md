@@ -25,7 +25,7 @@ Some of the things you could use it to do include:
 
 In your project directory run:
 
-```sh
+```console
 # Using npm
 npm install eleventy-plugin-transformdom --save-dev
 
@@ -35,7 +35,7 @@ yarn add eleventy-plugin-transformdom --dev
 
 Then update your project's `.eleventy.js` to use the plugin:
 
-```js
+```javascript
 const transformDomPlugin = require('eleventy-plugin-transformdom');
 
 module.exports = function (eleventyConfig) {
@@ -46,6 +46,8 @@ module.exports = function (eleventyConfig) {
 ```
 
 ### Write your Transform Items
+
+The plugins takes an array of Transform Items as configuration. Each Transform Item will be run in sequence, meaning you can write a selector and transform that modifies the DOM, then the next Transform Item can further modify the resulting DOM, and so on.
 
 A _Transform Item_ is an Object that contains two keys; `selector` & `transform`
 
@@ -74,25 +76,30 @@ The function will be passed an Object as argument. The `args` Object has the fol
 | elements | `Element[]` | An array of elements in the DOM matching the provided `selector` |
 | window | `DOMWindow` | The `window` of the generated HTML |
 | document | `Document` | The `window.document` of the generated HTML |
-| inputPath | `string` | The source file path from which eleventy is generating the HTML |
+| inputPath | `string` | The source file path from which Wleventy is generating the HTML |
 | outputPath | `string` | The output path/filename of the HTML file being generated |
-| inputDir | `string` | The source directory from which eleventy is building the site ([see the Eleventy docs](https://www.11ty.dev/docs/config/#input-directory)) |
+| inputDir | `string` | The source directory from which Eleventy is building the site ([see the Eleventy docs](https://www.11ty.dev/docs/config/#input-directory)) |
 | outputDir | `string` | The directory inside which the finished templates will be written to by Eleventy ([see the Eleventy docs](https://www.11ty.dev/docs/config/#output-directory)) |
 
+### Completed example with config
 
-#### An example Transform Item
+Here's an example with a Transform Item that finds all the images in your HTML and adds `loading="lazy"` to the markup:
 
-Here's an example Transform Item that finds all the images in your HTML and adds `loading="lazy"` to the markup:
+```javascript
+const transformDomPlugin = require('eleventy-plugin-transformdom');
 
-```js
-{
-  selector: 'img',
-  transform: ({ elements }) => {
-    elements.forEach((img) => {
-      img.setAttribute('loading', 'lazy');
-    });
-  },
-}
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(transformDomPlugin, [
+    {
+      selector: 'img',
+      transform: ({ elements }) => {
+        elements.forEach((img) => {
+          img.setAttribute('loading', 'lazy');
+        });
+      },
+    },
+  ]);
+};
 ```
 
 ## Contributing
