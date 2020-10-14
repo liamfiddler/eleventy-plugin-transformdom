@@ -9,6 +9,7 @@ Some of the things you could use it to do include:
 - 🔠 [Replace any text on the page](./examples/replace-text)
 - 📝 [Set the page `title` tag to match the first heading on the page](./examples/page-title)
 - 🌄 [Add `loading="lazy"` attributes to images](./examples/loading-lazy)
+- 🌟 [Insert async content from an API](./examples/async-transform)
 - 📃 [Append a script to the page (e.g. Google Analytics)](./examples/google-analytics)
 - 🧩 [Import web components, but only on pages they're used](./examples/web-components)
 - And more (we'd love to hear how you're using it, please get in touch!)
@@ -87,6 +88,8 @@ The function will be passed an Object as argument. The `args` Object has the fol
 | outputPath | `string` | The output path/filename of the HTML file being generated |
 | inputDir | `string` | The source directory from which Eleventy is building the site ([see the Eleventy docs](https://www.11ty.dev/docs/config/#input-directory)) |
 | outputDir | `string` | The directory inside which the finished templates will be written to by Eleventy ([see the Eleventy docs](https://www.11ty.dev/docs/config/#output-directory)) |
+
+Note: _async_ transform functions are supported, however they will be run in sequence to prevent race conditions.
 
 ## Contributing
 
