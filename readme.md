@@ -65,25 +65,21 @@ Each _Transform Item_ will be run in order. This means you can write a _Transfor
 
 #### selector
 
-**string** _required_
-
-The "selector" is a [CSS selector string](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors).
+The "selector" is a [CSS selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) (`string`).
 
 Multiple selectors may be separated with commas.
 
 #### transform
 
-**(args) => void** _required_
-
-The "transform" is a function that will be run on the generated HTML.
+The "transform" is a function (`(args) => void`) that will be run on the generated HTML.
 
 The function will be passed an Object as argument. The `args` Object has the following entries:
 
 | Key | Type | Description |
 |---|---|---|
-| elements | [JSDOM](https://github.com/jsdom/jsdom) `Element[]` | An array of elements in the DOM matching the provided `selector` |
-| window | [JSDOM](https://github.com/jsdom/jsdom) `DOMWindow` | The `window` of the generated HTML |
-| document | [JSDOM](https://github.com/jsdom/jsdom) `Document` | The `window.document` of the generated HTML |
+| elements | [`Element[]`](https://github.com/jsdom/jsdom) | An array of elements in the DOM matching the provided `selector` |
+| window | [`DOMWindow`](https://github.com/jsdom/jsdom) | The `window` of the generated HTML |
+| document | [`Document`](https://github.com/jsdom/jsdom) | The `window.document` of the generated HTML |
 | inputPath | `string` | The source file path from which Eleventy is generating the HTML |
 | outputPath | `string` | The output path/filename of the HTML file being generated |
 | inputDir | `string` | The source directory from which Eleventy is building the site ([see the Eleventy docs](https://www.11ty.dev/docs/config/#input-directory)) |
