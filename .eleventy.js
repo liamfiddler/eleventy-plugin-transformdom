@@ -31,9 +31,12 @@ function configFunction(eleventyConfig, transforms = []) {
 
     if (outputPath && outputPath.endsWith('.html')) {
       const dom = new JSDOM(content);
+      const numTransforms = transforms.length;
 
-      transforms.forEach(({ selector, transform }) => {
-        transform({
+      for (let i = 0; i < numTransforms; i++) {
+        const { selector, transform } = transforms[i];
+
+        await transform({
           elements: Array.from(dom.window.document.querySelectorAll(selector)),
           window: dom.window,
           document: dom.window.document,
@@ -42,7 +45,7 @@ function configFunction(eleventyConfig, transforms = []) {
           inputPath: this.inputPath,
           inputDir: this.inputDir,
         });
-      });
+      }
 
       content = dom.serialize();
     }
