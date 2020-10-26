@@ -55,7 +55,7 @@ module.exports = function (eleventyConfig) {
 };
 ```
 
-☝️ The example above shows a _Transform Item_ that finds all the images in your HTML and adds `loading="lazy"` to the markup. Read on learn how to customise your own transforms.
+☝️ The example above shows a _Transform Item_ that finds all the images in your HTML and adds `loading="lazy"` to the markup. Read on to learn how to customise your own transforms.
 
 ### Write your _Transform Items_
 
