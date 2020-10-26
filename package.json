@@ -18,5 +18,13 @@
   "license": "MIT",
   "dependencies": {
     "jsdom": "^16.4.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liamfiddler/eleventy-plugin-transformdom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liamfiddler/eleventy-plugin-transformdom/issues"
+  },
+  "homepage": "https://github.com/liamfiddler/eleventy-plugin-transformdom#readme"
 }
